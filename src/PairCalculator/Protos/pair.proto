@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "PairCalculator";
+
+package pair;
+
+// The service definition.
+service PairCalculator {
+  rpc IsItPair (PairRequest) returns (PairReply);
+}
+
+// The request message
+message PairRequest {
+  int64 number = 1;
+}
+
+// The response message
+message PairReply {
+  bool isPair = 1;
+}
