@@ -22,7 +22,7 @@ Al final de este workshop va a poder implementar aplicaciones basadas en microse
 
 ## Documentación
 
-Toda la documentación la podrás ver en el siguiente PDF:
+Toda la documentación la podrás ver en el PDF de asset llamado "Arquitectura_de_Microservicios_con_contenedores_usando_dotNET5.PDF"
 
 ## Ramas
 
