@@ -1,20 +1,21 @@
 syntax = "proto3";
 
-option csharp_namespace = "PairCalculator";
+option csharp_namespace = "microservicesapp";
 
 package pair;
 
-// The service definition.
+//Service definition for the microservice: PairCalculator
 service PairCalculator {
+  //Sends a true false if the number is pair or not
   rpc IsItPair (PairRequest) returns (PairReply);
 }
 
-// The request message
+//Request message
 message PairRequest {
   int64 number = 1;
 }
 
-// The response message
+//Response message containing the result
 message PairReply {
   bool isPair = 1;
 }
