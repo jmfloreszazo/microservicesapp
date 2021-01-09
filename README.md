@@ -18,7 +18,7 @@ No solamente vamos a centrarnos en contenedores y microservicios. Aprovecharemos
 
 Al final de este workshop va a poder implementar aplicaciones basadas en microservicios usando las ultimas herramientas de Microsoft con mucha facilidad.
 
-<img align="left" width="100" height="100" src="/asset/diagrama.png">
+<img align="center" width="350" height="350" src="/asset/diagrama.png">
 
 ## Documentación
 
