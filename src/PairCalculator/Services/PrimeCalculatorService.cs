@@ -29,9 +29,9 @@ namespace paircalculator
             }
             else if (request.Number % 2 == 0)
             {
-                return TRUE_RESULT;
                 var answerFromCache = await GetFromCache(request.Number);
                 if (answerFromCache == CACHE_HIT_SUCCESS) return TRUE_RESULT;
+                await SetThePrimeInCache(request);
                 return TRUE_RESULT;
             }
             else

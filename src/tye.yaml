@@ -11,10 +11,14 @@ services:
   - name: pairclienta
     project: pairclienta/pairclienta.csproj
   - name: redis
+    tags:
+      - be
     image: redis
     bindings:
       - port: 6379
         connectionString: ${host}:${port}
   - name: redis-cli
+    tags:
+      - be
     image: redis
     args: "redis-cli -h redis MONITOR"
