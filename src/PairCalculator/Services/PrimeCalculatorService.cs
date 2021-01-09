@@ -21,9 +21,17 @@ namespace paircalculator
         public override async Task<PairReply> IsItPair(PairRequest request, ServerCallContext context)
         {
             if (request == null)
+            {
                 return FALSE_RESULT;
-
-            return TRUE_RESULT;
+            }
+            else if (request.Number % 2 == 0)
+            {
+                return TRUE_RESULT;
+            }
+            else
+            {
+                return FALSE_RESULT;
+            }
         }
     }
 }

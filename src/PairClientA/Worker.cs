@@ -24,7 +24,7 @@ namespace pairclienta
             await Task.Delay(TimeSpan.FromSeconds(33), stoppingToken);
             _logger.LogInformation("Starting to send Pair number requests.......");
 
-            long input = 3;
+            long input = 1;
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -33,7 +33,7 @@ namespace pairclienta
                     var response = await _pairClient.IsItPairAsync(new PairRequest { Number = input });
                     _logger.LogInformation($"Is {input} a Pair number? Service tells us: {response.IsPair}\r");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     if (stoppingToken.IsCancellationRequested) return;
                     _logger.LogError(-1, ex, "Error occurred while calling IsItPairAsync() but will continue..");
