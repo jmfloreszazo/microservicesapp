@@ -18,6 +18,9 @@ services:
   - name: pairclientc
     project: pairclientc/pairclientc.csproj
     replicas: 4
+  - name: pairqconsumer
+    project: pairqconsumer/pairqconsumer.csproj
+    replicas: 1
   - name: redis
     image: redis
     bindings:
