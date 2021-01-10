@@ -4,6 +4,7 @@ using microservicesapp;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
+using paircalculator.Messaging;
 
 namespace paircalculator
 {
@@ -11,14 +12,18 @@ namespace paircalculator
     {
         private readonly ILogger<PairCalculatorService> _logger;
         private readonly IDistributedCache _cache;
+        private readonly IMessageQueueSender _mqSender;
         private readonly PairReply TRUE_RESULT = new PairReply { IsPair = true };
         private readonly PairReply FALSE_RESULT = new PairReply { IsPair = false };
         private readonly ValueTuple<bool, bool> CACHE_HIT_SUCCESS = new ValueTuple<bool, bool>(true, true);
+        private readonly string _queueName;
 
-        public PairCalculatorService(ILogger<PairCalculatorService> logger, IDistributedCache cache)
+        public PairCalculatorService(ILogger<PairCalculatorService> logger, IDistributedCache cache, IMessageQueueSender mqSender)
         {
             _logger = logger;
             _cache = cache;
+            _mqSender = mqSender;
+            _queueName = Constants.GetRabbitMQQueueName();
         }
 
         public override async Task<PairReply> IsItPair(PairRequest request, ServerCallContext context)
@@ -32,6 +37,7 @@ namespace paircalculator
                 var answerFromCache = await GetFromCache(request.Number);
                 if (answerFromCache == CACHE_HIT_SUCCESS) return TRUE_RESULT;
                 await SetThePrimeInCache(request);
+                _mqSender.Send(_queueName, request.Number.ToString());
                 return TRUE_RESULT;
             }
             else

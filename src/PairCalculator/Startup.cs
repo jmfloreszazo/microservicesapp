@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using paircalculator.Extensions;
 
 namespace paircalculator
 {
@@ -26,6 +27,8 @@ namespace paircalculator
             {
                 o.Configuration = Configuration.GetConnectionString(REDIS_SVC_TYE) ?? MANUAL_DEBUGTIME_REDIS_CS;
             });
+            
+            services.AddRabbitMQ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
