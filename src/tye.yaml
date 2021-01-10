@@ -8,8 +8,16 @@ name: microservicesapp
 services:
   - name: paircalculator
     project: paircalculator/paircalculator.csproj
+    replicas: 2
   - name: pairclienta
     project: pairclienta/pairclienta.csproj
+    replicas: 4
+  - name: pairclientb
+    project: pairclientb/pairclientb.csproj
+    replicas: 4
+  - name: pairclientc
+    project: pairclientc/pairclientc.csproj
+    replicas: 4
   - name: redis
     image: redis
     bindings:
