@@ -7,29 +7,45 @@
 name: microservicesapp
 services:
   - name: paircalculator
+    tags:
+      - bs
     project: paircalculator/paircalculator.csproj
     replicas: 2
   - name: pairclienta
+    tags:
+      - cl
     project: pairclienta/pairclienta.csproj
     replicas: 4
   - name: pairclientb
+    tags:
+      - cl
     project: pairclientb/pairclientb.csproj
     replicas: 4
   - name: pairclientc
+    tags:
+      - cl
     project: pairclientc/pairclientc.csproj
     replicas: 4
   - name: pairqconsumer
+    tags:
+      - mw
     project: pairqconsumer/pairqconsumer.csproj
     replicas: 1
   - name: redis
+    tags:
+      - bs
     image: redis
     bindings:
       - port: 6379
         connectionString: ${host}:${port}
   - name: redis-cli
+    tags:
+      - bs
     image: redis
     args: "redis-cli -h redis MONITOR"
   - name: rabbitmq
+    tags:
+      - mw
     image: rabbitmq:3-management
     bindings:
       - name: mq_binding
