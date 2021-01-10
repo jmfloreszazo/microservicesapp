@@ -28,12 +28,6 @@ namespace paircalculator.Messaging
                 else return v;
             }
             else return v;
-
-            /*Parsing via tye's connection string way
-            var rmq = configuration.GetConnectionString("rabbitmq:mq_binding") ?? Constants.MANUAL_DEBUGTIME_RABBITMQ_CS;
-            string[] values = rmq.Split(":");
-            hostname = values[0];
-            port = values[1];//*/
         }
 
         public static string GetRabbitMQPort()
@@ -69,7 +63,7 @@ namespace paircalculator.Messaging
         {
             var v = Environment.GetEnvironmentVariable(Constants.RABBIT_QUEUE);
             if (string.IsNullOrWhiteSpace(v))
-                return "primes"; //Debug time only - when localmachine debug without containers, without tye
+                return "pair"; //Debug time only - when localmachine debug without containers, without tye
             else return v;
         }
     }
