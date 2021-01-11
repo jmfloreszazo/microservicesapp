@@ -5,6 +5,7 @@
 #    https://aka.ms/AA7q20u
 #
 name: microservicesapp
+registry: localhost:5000
 services:
   - name: paircalculator
     tags:
